@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LandingComponent } from './components/landing/landing.component';
+import { JuegoComponent } from './components/juego/juego.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LandingComponent } from './components/landing/landing.component';
     NavbarComponent,
     LoginComponent,
     RegistroComponent,
-    LandingComponent
+    LandingComponent,
+    JuegoComponent
   ],
   imports: [
     BrowserModule,
