@@ -16,6 +16,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LandingComponent } from './components/landing/landing.component';
 import { JuegoComponent } from './components/juego/juego.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { HotToastModule } from '@ngneat/hot-toast';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -38,6 +43,10 @@ import { JuegoComponent } from './components/juego/juego.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    HotToastModule.forRoot(),
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
