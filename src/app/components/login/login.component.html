@@ -1,0 +1,42 @@
+<body>
+
+
+
+  <div class="container">
+    <img src="../../../assets/images/thelasgradt.png" height="340" width="350">
+
+
+      <div class="login-wrapper">
+
+        <form [formGroup]="loginForm">
+
+        <div class="input-box">
+          <mat-form-field>
+            <input  id="input1" matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="email?.errors?.['required']"><b>El email es requerido</b></mat-error>
+            <mat-error *ngIf="email?.errors?.['email']"><b>Por favor ingrese un email valido</b></mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="input-box">
+          <mat-form-field>
+            <input matInput placeholder="Contraseña" formControlName="password" type="password">
+            <mat-error *ngIf="password?.errors?.['required']"><b>La contraseña es requerida</b></mat-error>
+          </mat-form-field>
+        </div>
+
+        <button class="submit-btn" mat-raised-button color="primary" type="submit">
+          Ingresar
+        </button>
+        <span  class="info">¿Nuevo en la plataforma? <a id="a" routerLink="/registro">!!!Registrate</a></span>
+
+      </form>
+      </div>
+
+
+  </div>
+
+
+
+  <div class="circulo"></div>
+</body>
