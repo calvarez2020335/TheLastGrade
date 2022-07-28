@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { MatMenuModule } from '@angular/material/menu';
+import { TablaComponent } from './components/tabla/tabla.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MatMenuModule } from '@angular/material/menu';
     LoginComponent,
     RegistroComponent,
     LandingComponent,
-    JuegoComponent
+    JuegoComponent,
+    TablaComponent
   ],
   imports: [
     BrowserModule,
