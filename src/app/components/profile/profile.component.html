@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="m-4 position-relative" style="height: 600px">
+    <div class="card position-absolute top-50 start-50 form-container mat-elevation-z5 text-center translate-middle"
+      style="width: 30rem;" *ngIf="user$ | async as user">
+
+      <div class="card-title">
+        <h1 class="card-title" style="margin-top:20px">{{user.displayName}}</h1>
+      </div>
+
+      <div class="profile-image" style="margin-bottom: 25px;">
+        <img width="120" height="120" class="margin-top mat-elevation-z1"
+          [src]="user.photoURL ?? '/assets/images/image-placeholder.png'" />
+        <button mat-mini-fab (click)="inputField.click()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <input #inputField type="file" hidden (change)="uploadImage($event, user)" />
+
+    </div>
+  </div>
+</div>

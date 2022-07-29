@@ -22,6 +22,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { MatMenuModule } from '@angular/material/menu';
 import { TablaComponent } from './components/tabla/tabla.component';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { TablaComponent } from './components/tabla/tabla.component';
     RegistroComponent,
     LandingComponent,
     JuegoComponent,
-    TablaComponent
+    TablaComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { TablaComponent } from './components/tabla/tabla.component';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
     HotToastModule.forRoot(),
     MatMenuModule
   ],
