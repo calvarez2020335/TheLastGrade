@@ -50,7 +50,7 @@
           <li>
             <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
               <button mat-button [matMenuTriggerFor]="userMenu">
-                <mat-icon class="bi d-block mx-auto mb-1" width="24" height="24">account_circle</mat-icon>
+                <img class="profile-image-toolbar bi d-block mx-auto mb-1" width="30" height="30" [src]="user.photoURL ?? '/assets/images/image-placeholder.png'" />
                 {{user.displayName}}
                 <mat-icon>expand_more</mat-icon>
               </button>
@@ -77,5 +77,6 @@
 </header>
 
 <mat-menu #userMenu="matMenu">
+  <button mat-menu-item routerLink="/perfil">Editar mi perfil</button>
   <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
 </mat-menu>
