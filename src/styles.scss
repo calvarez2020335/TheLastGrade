@@ -37,3 +37,10 @@ $thelastgrade-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0;}
+@import '@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Press Start 2P',
+);
+
+@include mat-core($custom-typography);
