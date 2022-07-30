@@ -16,6 +16,36 @@
       </div>
       <input #inputField type="file" hidden (change)="uploadImage($event, user)" />
 
+      <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+
+        <mat-form-field>
+          <input type="text" matInput formControlName="firstName" placeholder="Nombre" />
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input type="text" matInput formControlName="lastName" placeholder="Apellido" />
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input type="text" matInput formControlName="displayName" placeholder="nickname" />
+          <mat-error *ngIf="displayName?.errors?.['required']">
+            <b>El campo es obligatorio</b>
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input type="number" matInput formControlName="phone" placeholder="Numero de telefono" />
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <button type="submit" class="margin-top" mat-raised-button color="primary">
+          Save
+        </button>
+        <br>
+        <br>
+      </form>
+
     </div>
   </div>
 </div>
