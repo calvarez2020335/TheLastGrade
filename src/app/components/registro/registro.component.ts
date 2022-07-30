@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { switchMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UsersService } from 'src/app/services/users.service';
 
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -38,6 +40,7 @@ export class RegistroComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private toast: HotToastService,
+    private usersService: UsersService
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +66,9 @@ export class RegistroComponent implements OnInit {
     if(!this.signUpForm.valid) return;
 
     const { name, email, password} =this.signUpForm.value;
-    this.authService.signUp(name, email, password).pipe(
+    this.authService.signUp(email, password).pipe(
+
+      switchMap(({user: { uid }}) => this.usersService.addUser({ uid, email, displayName: name})),
       this.toast.observe({
         success: 'Cuenta creada con exito!!',
         loading: 'Creando cuenta',
