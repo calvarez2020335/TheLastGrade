@@ -1,3 +1,7 @@
+<head>
+  <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+</head>
+
 <body>
 
 
@@ -6,37 +10,70 @@
     <img src="../../../assets/images/thelasgradt.png" height="340" width="350">
 
 
-      <div class="login-wrapper">
+    <div class="login-wrapper">
 
-        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
 
         <div class="input-box">
           <mat-form-field>
-            <input  id="input1" matInput placeholder="Email" formControlName="email">
-            <mat-error *ngIf="email?.errors?.['required']"><b>El email es requerido</b></mat-error>
-            <mat-error *ngIf="email?.errors?.['email']"><b>Por favor ingrese un email valido</b></mat-error>
+            <input id="input1" matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="email?.errors?.['required']"><b id="prueba">El email es requerido</b></mat-error>
+            <mat-error *ngIf="email?.errors?.['email']"><b id="prueba2">Por favor ingrese un email valido</b>
+            </mat-error>
           </mat-form-field>
         </div>
 
         <div class="input-box">
           <mat-form-field>
             <input matInput placeholder="Contraseña" formControlName="password" type="password">
-            <mat-error *ngIf="password?.errors?.['required']"><b>La contraseña es requerida</b></mat-error>
+            <mat-error *ngIf="password?.errors?.['required']"><b id="prueba3">La contraseña es requerida</b></mat-error>
           </mat-form-field>
         </div>
 
         <button class="submit-btn" mat-raised-button color="primary" type="submit">
           Ingresar
         </button>
-        <span  class="info">¿Nuevo en la plataforma? <a id="a" routerLink="/registro">!!!Registrate</a></span>
+        <span class="info">¿Nuevo en la plataforma? <a id="a" routerLink="/registro">!!!Registrate</a></span>
 
       </form>
-      </div>
+    </div>
 
 
   </div>
 
 
+  <div class="imagen1">
+    <img style="transform:rotate(320deg) " src="../../../assets/images/lapiz-removebg-preview.png" height="150"
+      width="160">
+  </div>
+  <div class="imagen2">
+    <img style="transform:rotate(20deg) " src="../../../assets/images/lapisero-removebg-preview.png" height="180"
+      width="190">
+  </div>
+  <div class="imagen3">
+    <img style="transform:rotate(320deg) " src="../../../assets/images/libro1-removebg-preview (1).png" height="180"
+      width="190">
+  </div>
+
+  <div class="imagen4">
+    <img style="transform:rotate(10deg) " src="../../../assets/images/libro2-removebg-preview.png" height="170"
+      width="270">
+  </div>
 
   <div class="circulo"></div>
+
+  <div class="area" >
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+</div >
+
 </body>

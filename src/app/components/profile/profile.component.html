@@ -1,51 +1,66 @@
-<div class="container">
-  <div class="m-4 position-relative" style="height: 600px">
-    <div class="card position-absolute top-50 start-50 form-container mat-elevation-z5 text-center translate-middle"
-      style="width: 30rem;" *ngIf="user$ | async as user">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-      <div class="card-title">
-        <h1 class="card-title" style="margin-top:20px">{{user.displayName}}</h1>
+  <style>
+    html, body, pre, code, kbd, samp{
+      font-family: 'Press Start 2P';
+        font-size: 8px;
+    }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="m-4 position-relative" style="height: 600px">
+      <div class="card position-absolute top-50 start-50 form-container mat-elevation-z5 text-center translate-middle"
+        style="width: 30rem;" *ngIf="user$ | async as user">
+
+        <div class="card-title">
+          <h2 class="card-title" style="margin-top:20px">{{user.displayName}}</h2>
+        </div>
+
+        <div class="profile-image" style="margin-bottom: 25px;">
+          <img width="120" height="120" class="margin-top mat-elevation-z1"
+            [src]="user.photoURL ?? '/assets/images/image-placeholder.png'" />
+          <button mat-mini-fab (click)="inputField.click()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <input #inputField type="file" hidden (change)="uploadImage($event, user)" />
+
+        <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+
+          <mat-form-field>
+            <input type="text" matInput formControlName="firstName" placeholder="Nombre" />
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input type="text" matInput formControlName="lastName" placeholder="Apellido" />
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input type="text" matInput formControlName="displayName" placeholder="nickname" />
+            <mat-error *ngIf="displayName?.errors?.['required']">
+              <b>El campo es obligatorio</b>
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input type="number" matInput formControlName="phone" placeholder="Numero de telefono" />
+          </mat-form-field>
+          <br>
+          <br>
+          <br>
+          <button type="submit" class="margin-top" mat-raised-button color="primary">
+            Actualizar Perfil
+          </button>
+          <br>
+          <br>
+        </form>
+
       </div>
-
-      <div class="profile-image" style="margin-bottom: 25px;">
-        <img width="120" height="120" class="margin-top mat-elevation-z1"
-          [src]="user.photoURL ?? '/assets/images/image-placeholder.png'" />
-        <button mat-mini-fab (click)="inputField.click()">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </div>
-      <input #inputField type="file" hidden (change)="uploadImage($event, user)" />
-
-      <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
-
-        <mat-form-field>
-          <input type="text" matInput formControlName="firstName" placeholder="Nombre" />
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input type="text" matInput formControlName="lastName" placeholder="Apellido" />
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input type="text" matInput formControlName="displayName" placeholder="nickname" />
-          <mat-error *ngIf="displayName?.errors?.['required']">
-            <b>El campo es obligatorio</b>
-          </mat-error>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input type="number" matInput formControlName="phone" placeholder="Numero de telefono" />
-        </mat-form-field>
-        <br>
-        <br>
-        <br>
-        <button type="submit" class="margin-top" mat-raised-button color="primary">
-          Save
-        </button>
-        <br>
-        <br>
-      </form>
-
     </div>
   </div>
-</div>
+
+</body>
