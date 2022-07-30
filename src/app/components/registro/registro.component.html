@@ -1,1 +1,62 @@
-<p>registro works!</p>
+<body>
+  <div class="container">
+    <div class="login-wrapper">
+      <h1 style="text-align: center;">Crea tu cuenta</h1>
+
+      <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+
+        <div class="input-box">
+          <mat-form-field>
+            <input matInput placeholder="NickName" formControlName="name" />
+            <mat-error *ngIf="name?.errors?.['required']">
+              <b>El campo es obligatorio</b>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="input-box">
+          <mat-form-field>
+            <input matInput placeholder="Correo electronico" formControlName="email" />
+            <mat-error *ngIf="email?.errors?.['required']">
+              <b>El campo es obligatorio</b>
+            </mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">
+              <b>No se reconoce el email</b>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="input-box">
+          <mat-form-field>
+            <input matInput type="password" placeholder="Contraseña" formControlName="password" />
+            <mat-error *ngIf="password?.errors?.['required']">
+              <b>El campo es obligatorio</b>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="input-box">
+          <mat-form-field>
+            <input matInput type="password" placeholder="Confirmar Contraseña" formControlName="confirmPassword" />
+            <mat-error *ngIf="confirmPassword?.errors?.['required']">
+              <b>El campo es obligatorio</b>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+          <b>La contraseña no coincide</b>
+        </mat-error>
+
+        <button type="submit" mat-raised-button color="primary">Crear cuenta</button>
+
+      </form>
+    </div>
+
+
+
+  </div>
+
+
+
+  <div class="circulo"></div>
+</body>

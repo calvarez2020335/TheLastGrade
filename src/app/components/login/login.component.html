@@ -20,7 +20,7 @@
 
       <div class="login-wrapper">
 
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
 
         <div class="input-box">
           <mat-form-field>

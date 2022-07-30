@@ -16,6 +16,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LandingComponent } from './components/landing/landing.component';
 import { JuegoComponent } from './components/juego/juego.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { HotToastModule } from '@ngneat/hot-toast';
+import { MatMenuModule } from '@angular/material/menu';
+import { TablaComponent } from './components/tabla/tabla.component';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -26,7 +35,9 @@ import { JuegoComponent } from './components/juego/juego.component';
     LoginComponent,
     RegistroComponent,
     LandingComponent,
-    JuegoComponent
+    JuegoComponent,
+    TablaComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +49,12 @@ import { JuegoComponent } from './components/juego/juego.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
+    HotToastModule.forRoot(),
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

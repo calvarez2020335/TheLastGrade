@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   })
 
-  constructor() { }
+  constructor(private authService: AuthenticationService, private router: Router, private toast: HotToastService) { }
 
   ngOnInit(): void {
   }
@@ -26,4 +29,22 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password')
   }
+
+  submit(){
+    if (!this.loginForm.valid) {
+      return;
+    }
+    const { email, password } = this.loginForm.value
+    this.authService.login(email, password).pipe(
+      this.toast.observe({
+        success: 'Sesión iniciada correctamente',
+        loading: 'Iniciando sesión...',
+        error: 'Error ocurrido'
+      })
+    ).subscribe(()=>{
+      this.router.navigate(['/juego']);
+    })
+
+  }
+
 }
