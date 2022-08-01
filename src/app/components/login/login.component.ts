@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         error: 'Error ocurrido'
       })
     ).subscribe(()=>{
-      this.router.navigate(['/juego']);
+      this.router.navigate(['/perfil']);
     })
 
   }
