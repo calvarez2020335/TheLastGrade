@@ -2,26 +2,44 @@
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
   <style>
-    html, body, pre, code, kbd, samp {
+    html,
+    body,
+    pre,
+    code,
+    kbd,
+    samp {
       font-family: 'Press Start 2P';
       font-size: 10px;
     }
-</style>
+  </style>
 </head>
 <h1 *ngIf="user$ |async as user">Bienvenido, {{user.displayName}}</h1>
 <br>
 <div class="row featurette">
-    <div class="col-md-8">
-        <svg class="img-fluid mx-auto" width="1500" height="700"  role="img" >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">Juego</text>
-        </svg>
+  <div class="col-md-8">
+    <div class="mx-auto container-fluid">
+      <div id="unity-container" class="unity-desktop">
+        <canvas id="unity-canvas" width=700 height=600></canvas>
+        <div id="unity-loading-bar">
+          <div id="unity-logo"></div>
+          <div id="unity-progress-bar-empty">
+            <div id="unity-progress-bar-full"></div>
+          </div>
+        </div>
+        <div id="unity-warning"> </div>
+        <div id="unity-footer">
+          <div id="unity-webgl-logo"></div>
+          <div id="unity-fullscreen-button"></div>
+          <div id="unity-build-title">Kumatz' 🐍</div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="col-md-3">
-        <h2>Controles</h2>
-        <img class="img-fluid mx-auto" width="400" height="400" src="../../../assets/images/controlesM.png">
-        <img class="img-fluid mx-auto" width="200" height="200" src="../../../assets/images/espacio.png">
-        <img class="img-fluid mx-auto" width="100" height="100" src="../../../assets/images/C.png">
-    </div>
+  <div class="col-md-3">
+    <h2>Controles</h2>
+    <img class="img-fluid mx-auto" width="400" height="400" src="../../../assets/images/controlesM.png">
+    <img class="img-fluid mx-auto" width="200" height="200" src="../../../assets/images/espacio.png">
+    <img class="img-fluid mx-auto" width="100" height="100" src="https://cdn-icons-png.flaticon.com/512/32/32512.png">
+  </div>
 </div>
