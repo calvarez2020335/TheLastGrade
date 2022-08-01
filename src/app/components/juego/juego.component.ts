@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-juego',
@@ -8,11 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./juego.component.scss'],
 })
 export class JuegoComponent implements OnInit {
-  user$ = this.authService.currentUser$;
+  user$ = this.usersService.currentUserProfile$;
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private usersService: UsersService
   ) {}
 
   ngOnInit(): void {
