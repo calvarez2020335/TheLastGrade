@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: '',  pathMatch: 'full', component: HomeComponent},
   {path: 'login', component: LoginComponent, ...canActivate(redirectToHome)},
   {path: 'registro', component: RegistroComponent, ...canActivate(redirectToHome)},
-  {path: 'juego', component: JuegoComponent, },
+  {path: 'juego', component: JuegoComponent, ...canActivate(redirectToLogin)},
   {path: 'tabla', component: TablaComponent, ...canActivate(redirectToLogin)},
   {path: 'perfil', component: ProfileComponent, ...canActivate(redirectToLogin)}
 ];
