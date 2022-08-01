@@ -75,7 +75,7 @@ export class RegistroComponent implements OnInit {
         error: ({ message }) => `${message}`,
       })
     ).subscribe(()=>{
-      this.router.navigate(['/juego'])
+      this.router.navigate(['/perfil'])
     })
   }
 
